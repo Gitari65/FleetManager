@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CountryController {
     @GetMapping("/countries")
-    public String getCountry(){
+    public String goCountry(){
         return "country";
     }
 
