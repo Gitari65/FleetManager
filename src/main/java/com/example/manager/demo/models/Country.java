@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private String id;
+    private Integer id;
     private String code;
     private  String nationality;
     private String description;
