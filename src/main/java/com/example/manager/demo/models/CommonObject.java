@@ -1,5 +1,6 @@
 package com.example.manager.demo.models;
 
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -31,7 +32,7 @@ public class CommonObject {
     public void setDetails(String details) {
         this.details = details;
     }
-
+@Id
     public  Integer id;
     public String description;
 
