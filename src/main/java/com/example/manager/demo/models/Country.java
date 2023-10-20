@@ -24,6 +24,4 @@ public class Country {
     private String description;
     private String continent;
 
-
-
 }
