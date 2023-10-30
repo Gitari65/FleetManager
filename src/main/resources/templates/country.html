@@ -503,12 +503,12 @@
     <section class="section dashboard">
         <div class="row ">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#updateModal">
                 +Add a Country
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -541,6 +541,39 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editModalLabel">Edit Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="put" th:action="@{/countries/update}" >
+                                <div class="mb-3">
+                                    <label for="country-id-edit" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="country-id-edit" name="id" >
+                                    <label for="country-code-edit" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="country-code-edit" name="code" >
+                                    <label for="country-description-edit" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="country-description-edit" name="description"  >
+                                    <label for="country-continent-edit" class="form-label">Continent</label>
+                                    <input type="text" class="form-control" id="country-continent-edit" name="continent" >
+                                    <label for="country-nationality-edit" class="form-label">Nationality</label>
+                                    <input type="text" class="form-control" id="country-nationality-edit" name="nationality" >
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table class="table table-striped" id="country-table">
                 <thead>
                 <tr>
@@ -548,6 +581,7 @@
                     <th>Continent</th>
                     <th>Description</th>
                     <th>Nationality</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -556,6 +590,9 @@
                     <td th:text="${country.continent}"></td>
                     <td th:text="${country.description}"></td>
                     <td th:text="${country.nationality}"></td>
+                    <td>
+                        <button type="button" id="editButton" th:href="@{/countries/findById/(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -598,6 +635,8 @@
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/Country.js"></script>
 </body>
 
 </html>
