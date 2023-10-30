@@ -2,19 +2,11 @@ package com.example.manager.demo.services;
 
 import com.example.manager.demo.Repositories.CountryRepository;
 import com.example.manager.demo.models.Country;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CountryService {
@@ -28,5 +20,11 @@ public List<Country> getCountries(){
     public void save(Country country){
     countryRepository.save(country);
 }
+
+    //find country by id
+    public Optional<Country> findById(Integer id){
+    return  countryRepository.findById(id);
+
+    }
 
 }
