@@ -2,9 +2,10 @@ $('document').ready(function(){
 //        $('#editButton').on('click',function(event){
 //        $('#editModal').modal();
 //        });
+console.log("hey in country.js")
 
             // /countries/findById?id=1
-            $('#editButton').on('click',function(){
+            $('#editButton').on('click',function(event){
             event.preventDefault();
                  var href= $(this).attr('href');
                   $.get(href,function(country,status){
@@ -13,6 +14,7 @@ $('document').ready(function(){
                         $('#country-description-edit').val(country.description);
                         $('#country-continent-edit').val(country.continent);
                         $('#country-nationality-edit').val(country.nationality);
+
 
                    });
             });
