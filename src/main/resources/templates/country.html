@@ -591,7 +591,10 @@
                     <td th:text="${country.description}"></td>
                     <td th:text="${country.nationality}"></td>
                     <td>
-                        <button type="button" id="editButton" th:href="@{/countries/findById/(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+
+                            <a type="button" id="editButton" th:href="@{/countries/findById/(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+
+
                     </td>
                 </tr>
                 </tbody>
