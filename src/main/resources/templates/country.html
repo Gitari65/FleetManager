@@ -549,8 +549,9 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="put" th:action="@{/countries/update}" >
+                            <form method="post" th:action="@{/countries/update}" th:object="{Country}" >
                                 <div class="mb-3">
+                                    <input type="hidden" name="_method" value="put" />
                                     <label for="country-id-edit" class="form-label">ID</label>
                                     <input type="text" class="form-control" id="country-id-edit" name="id" >
                                     <label for="country-code-edit" class="form-label">Code</label>
@@ -592,7 +593,7 @@
                     <td th:text="${country.nationality}"></td>
                     <td>
 
-                            <a type="button" id="editButton" th:href="@{/countries/findById/(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                            <a type="button" id="editButton" th:href="@{/countries/findById(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
 
 
                     </td>
