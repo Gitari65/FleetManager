@@ -549,7 +549,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" th:action="@{/countries/update}" th:object="{Country}" >
+                            <form method="post" th:action="@{/countries/update}"  >
                                 <div class="mb-3">
                                     <input type="hidden" name="_method" value="put" />
                                     <label for="country-id-edit" class="form-label">ID</label>
@@ -575,6 +575,27 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="confirmModalLabel">Edit Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                                <P>Are you sure you want to  delete?</P>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <a type="button" href="" id="confirmDeleteButton" class="btn btn-primary">Yes,Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table class="table table-striped" id="country-table">
                 <thead>
                 <tr>
@@ -594,7 +615,7 @@
                     <td>
 
                             <a type="button" id="editButton" th:href="@{/countries/findById(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
-
+                        <a type="button" id="deleteButton" th:href="@{/countries/delete(id=${country.id})}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Delete</a>
 
                     </td>
                 </tr>
