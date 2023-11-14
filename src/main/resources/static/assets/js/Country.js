@@ -21,3 +21,8 @@ console.log("hey in country.js")
             });
 
 });
+$('table #deleteButton').on('click',function(event){
+ var href=$(this).attr('href');
+ $('#confirmDeleteButton').attr('href',href);
+
+})
