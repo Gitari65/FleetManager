@@ -37,16 +37,16 @@ public String addNew(Country country){
     }
     @RequestMapping ( value = "/countries/update",
 
-    method = {RequestMethod.PUT,RequestMethod.GET})
+    method = {RequestMethod.PUT,RequestMethod.POST})
     public  String update(Country country){
         countryService.save(country);
-        return  "redirect:country";
+        return  "redirect:/countries";
     }
     @RequestMapping(value  ="/countries/delete",
             method = {RequestMethod.DELETE,RequestMethod.GET})
     public String delete(@RequestParam Integer id){
         countryService.delete(id);
-        return "redirect:country";
+        return "redirect:/countries";
 
     }
 
