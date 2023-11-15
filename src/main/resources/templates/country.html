@@ -531,7 +531,7 @@
 
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -565,7 +565,7 @@
 
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -590,7 +590,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                             <a type="button" href="" id="confirmDeleteButton" class="btn btn-primary">Yes,Delete</a>
                         </div>
                     </div>
@@ -614,8 +614,9 @@
                     <td th:text="${country.nationality}"></td>
                     <td>
 
-                            <a type="button" id="editButton" th:href="@{/countries/findById(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
-                        <a type="button" id="deleteButton" th:href="@{/countries/delete(id=${country.id})}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Delete</a>
+                            <a type="button" id="editButton" th:href="@{/countries/findById(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPJJREFUSEvF0zFKBDEUh/HfnkALEWy19gI2Xkg7rdZGRAu19EaCN7ASbK0EtxeUB1PEcTLJTHbZtEm+7+X/XhY2vBYb5msV3OAb17lCWwQPuOjAl3gckswV7OEV+wn0Crd9yRzBLr5whGccdNAl7loFZ4hKT/COQ7x08TRHFHlH7rE+cIo37GDV2uRo4n0PEpJjfI6Nek0P0spT1hPOS/+oJGiCh3xMkINHMyOyqpUTrAWee8Ha4DnBz8DbJ8WS3h+KqC+YDa95QRO8NEVVU1I6VPoHpfvF/a0IhqaoWGly4E/RNVM0Bf6vr1uJaGrFo+d/AQouJhks7bRaAAAAAElFTkSuQmCC"/></a>
+                        <a type="button" id="detailButton"  class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKVJREFUSEu9lUEKwjAQRV/PIRSkC71NL+PGG7QX8iDddCcteA8l0EAMKRkcf7NN5r/8zyTTIF6NWJ9DAT0wAFenqxm4AY+gkzp4ASeneCx/Al0OeG+73ti+dFKxwwERaE0tXtbsQA6w3jw/Z3YgB8gjkgPkEckBexHVXrq5i+QAeUR/B6xA+6tqVrcA5/y7DgNnBC5OyATcSwPHqVsur7WcGyoHfAC5wCwZkHEBmwAAAABJRU5ErkJggg=="/> </a>
+                        <a type="button" id="deleteButton" th:href="@{/countries/delete(id=${country.id})}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKRJREFUSEvtlUEKgCAQRV93CYK6TsdpGXSZrlPQaYpAXVjDt8xd7mR03v8z6FQUXlXh/ChAD4xAYwjZgAGYLaEKsACtcLkC3VvA7i5aQlRclkglUPELwF/I7X1wHFsvDvDKpfXIonn+dfO+BsQK1T7wUx2ohNkl+gGXd/W0JH8P5NeUXSJFeAxIGTQx9HbwWC/5HJUTUCvpLm6OTjUyE/Pbx4oDDlBhOBmYaWrOAAAAAElFTkSuQmCC"/> </a>
 
                     </td>
                 </tr>
