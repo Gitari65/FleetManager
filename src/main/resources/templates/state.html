@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - EmployeeTypes</title>
+    <title>Dashboard - States</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -495,15 +495,128 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item active">EmployeeTypes</li>
+                <li class="breadcrumb-item active">States</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
         <div class="row">
+            <!-- Modal -->
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">New Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" th:action="@{/countries/addNew}" >
+                                <div class="mb-3">
+                                    <label for="country-id" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="country-id" name="id" >
+                                    <label for="country-code" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="country-code" name="code" >
+                                    <label for="country-description" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="country-description" name="description"  >
+                                    <label for="country-continent" class="form-label">Continent</label>
+                                    <input type="text" class="form-control" id="country-continent" name="continent" >
+                                    <label for="country-nationality" class="form-label">Nationality</label>
+                                    <input type="text" class="form-control" id="country-nationality" name="nationality" >
 
-            <h1>My EmployeeTypes</h1>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editModalLabel">Edit Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" th:action="@{/countries/update}"  >
+                                <div class="mb-3">
+                                    <input type="hidden" name="_method" value="put" />
+                                    <label for="country-id-edit" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="country-id-edit" name="id" >
+                                    <label for="country-code-edit" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="country-code-edit" name="code" >
+                                    <label for="country-description-edit" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="country-description-edit" name="description"  >
+                                    <label for="country-continent-edit" class="form-label">Continent</label>
+                                    <input type="text" class="form-control" id="country-continent-edit" name="continent" >
+                                    <label for="country-nationality-edit" class="form-label">Nationality</label>
+                                    <input type="text" class="form-control" id="country-nationality-edit" name="nationality" >
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="confirmModalLabel">Edit Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <P>Are you sure you want to  delete?</P>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <a type="button" href="" id="confirmDeleteButton" class="btn btn-primary">Yes,Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#updateModal" >Add state</button>
+            <table class="table table-striped" id="country-table">
+                <thead>
+                <tr>
+
+                    <th>id</th>
+                    <th>description</th>
+                    <th>code</th>
+                    <th>actions</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="state:${states}">
+                    <td th:text="${state.id}"></td>
+                    <td th:text="${state.description}"></td>
+                    <td th:text="${state.code}"></td>
+                    <td>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
 
 
 
