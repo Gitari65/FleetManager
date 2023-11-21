@@ -513,16 +513,19 @@
                         <div class="modal-body">
                             <form method="post" th:action="@{/countries/addNew}" >
                                 <div class="mb-3">
-                                    <label for="country-id" class="form-label">ID</label>
-                                    <input type="text" class="form-control" id="country-id" name="id" >
+                                    <label for="state-id" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="state-id" name="id" >
                                     <label for="country-code" class="form-label">Code</label>
                                     <input type="text" class="form-control" id="country-code" name="code" >
-                                    <label for="country-description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" id="country-description" name="description"  >
-                                    <label for="country-continent" class="form-label">Continent</label>
-                                    <input type="text" class="form-control" id="country-continent" name="continent" >
-                                    <label for="country-nationality" class="form-label">Nationality</label>
-                                    <input type="text" class="form-control" id="country-nationality" name="nationality" >
+                                    <label for="country-description" class="form-label">Details</label>
+                                    <input type="text" class="form-control" id="country-description" name="details"  >
+                                    <label for="country-id"  class="form-label">Country:</label>
+                                        <select name="country_id"  class="form-control" id="country-id" >
+                                            <option value="">---SELECT---</option>
+                                            <option th:each="country:${countries}" th:value="${country.id}" th:text="${country.nationality}"></option>
+                                        </select>
+
+
 
                                 </div>
 
@@ -592,7 +595,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#updateModal" >Add state</button>
+            <button class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#updateModal" >+Add state</button>
             <table class="table table-striped" id="country-table">
                 <thead>
                 <tr>
