@@ -511,11 +511,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" th:action="@{/countries/addNew}" >
+                            <form method="post" th:action="@{/state/addNew}" >
                                 <div class="mb-3">
                                     <label for="state-id" class="form-label">ID</label>
                                     <input type="text" class="form-control" id="state-id" name="id" >
                                     <label for="country-code" class="form-label">Code</label>
+                                    <label for="state-name" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="state-name" name="name" >
                                     <input type="text" class="form-control" id="country-code" name="code" >
                                     <label for="country-description" class="form-label">Details</label>
                                     <input type="text" class="form-control" id="country-description" name="details"  >
@@ -600,17 +602,19 @@
                 <thead>
                 <tr>
 
-                    <th>id</th>
-                    <th>description</th>
-                    <th>code</th>
-                    <th>actions</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Details</th>
+                    <th>Actions</th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="state:${states}">
                     <td th:text="${state.id}"></td>
-                    <td th:text="${state.description}"></td>
+                    <td th:text="${state.name}"></td>
+                    <td th:text="${state.details}"></td>
                     <td th:text="${state.code}"></td>
                     <td>
 
