@@ -23,7 +23,7 @@ public class StateController {
         model.addAttribute("states",stateList);
         return "state";
     }
-    @RequestMapping(value = "/state/update",method = {RequestMethod.PUT,RequestMethod.POST})
+    @RequestMapping(value = "/state/addNew",method = {RequestMethod.PUT,RequestMethod.POST})
     public String updateStates(State state){
         stateService.save(state);
         return "redirect:/state";
