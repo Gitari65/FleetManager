@@ -13,13 +13,12 @@ public class State {
     @Id
     private  Integer id;
     private String name;
-    private String capital;
     private String code;
 
     @ManyToOne
     @JoinColumn(name = "countryid",insertable = false,updatable = false)
     private com.example.manager.demo.models.Country country;
-    private Integer countryid;
+    private Integer country_id;
     private String details;
 
 }
