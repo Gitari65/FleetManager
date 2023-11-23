@@ -28,8 +28,8 @@ public class StateService {
 public Optional<State> findById(@RequestParam Integer id){
         return stateRepository.findById(id);
 }
-public void delete(Integer id){
-        stateRepository.deleteById(id);
+public void delete(@RequestParam  Integer id){
+        stateRepository.deleteById(  id);
 }
 
 }
