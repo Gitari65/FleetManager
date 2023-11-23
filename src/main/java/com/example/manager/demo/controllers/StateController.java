@@ -29,5 +29,10 @@ public class StateController {
         return "redirect:/state";
 
     }
+    @RequestMapping(value = "/state/delete",method = {RequestMethod.DELETE,RequestMethod.POST})
+    public String deleteStates(Integer id){
+        stateService.delete(id);
+        return  "redirect:/state";
+    }
 
 }
