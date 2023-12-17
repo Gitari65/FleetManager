@@ -507,7 +507,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">New Country Details</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">New State Details</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -545,23 +545,27 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="editModalLabel">Edit Country Details</h1>
+                            <h1 class="modal-title fs-5" id="editModalLabel">Edit State Details</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" th:action="@{/countries/update}"  >
+                            <form method="post" th:action="@{/states/update}"  >
                                 <div class="mb-3">
-                                    <input type="hidden" name="_method" value="put" />
-                                    <label for="country-id-edit" class="form-label">ID</label>
-                                    <input type="text" class="form-control" id="country-id-edit" name="id" >
-                                    <label for="country-code-edit" class="form-label">Code</label>
-                                    <input type="text" class="form-control" id="country-code-edit" name="code" >
-                                    <label for="country-description-edit" class="form-label">Description</label>
-                                    <input type="text" class="form-control" id="country-description-edit" name="description"  >
-                                    <label for="country-continent-edit" class="form-label">Continent</label>
-                                    <input type="text" class="form-control" id="country-continent-edit" name="continent" >
-                                    <label for="country-nationality-edit" class="form-label">Nationality</label>
-                                    <input type="text" class="form-control" id="country-nationality-edit" name="nationality" >
+                                    <label for="state-id-edit" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="state-id-edit" name="id" >
+                                    <label for="state-code-edit" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="state-code-edit" name="code" >
+                                    <label for="state-name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="state-name-edit" name="name" >
+
+                                    <label for="state-description-edit" class="form-label">Details</label>
+                                    <input type="text" class="form-control" id="state-description-edit" name="details"  >
+                                    <label for="country-id-edit"  class="form-label">Country:</label>
+                                    <select name="country_id-edit"  class="form-control" id="country-id-edit" >
+                                        <option value="">---SELECT---</option>
+                                        <option th:each="country:${countries}" th:value="${country.id}" th:text="${country.nationality}"></option>
+                                    </select>
+
 
                                 </div>
 
@@ -617,6 +621,9 @@
                     <td th:text="${state.details}"></td>
                     <td th:text="${state.code}"></td>
                     <td>
+                        <a type="button" id="editButton" th:href="@{/state/findById(id=${country.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPJJREFUSEvF0zFKBDEUh/HfnkALEWy19gI2Xkg7rdZGRAu19EaCN7ASbK0EtxeUB1PEcTLJTHbZtEm+7+X/XhY2vBYb5msV3OAb17lCWwQPuOjAl3gckswV7OEV+wn0Crd9yRzBLr5whGccdNAl7loFZ4hKT/COQ7x08TRHFHlH7rE+cIo37GDV2uRo4n0PEpJjfI6Nek0P0spT1hPOS/+oJGiCh3xMkINHMyOyqpUTrAWee8Ha4DnBz8DbJ8WS3h+KqC+YDa95QRO8NEVVU1I6VPoHpfvF/a0IhqaoWGly4E/RNVM0Bf6vr1uJaGrFo+d/AQouJhks7bRaAAAAAElFTkSuQmCC"/></a>
+                        <a type="button" id="detailButton"  class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKVJREFUSEu9lUEKwjAQRV/PIRSkC71NL+PGG7QX8iDddCcteA8l0EAMKRkcf7NN5r/8zyTTIF6NWJ9DAT0wAFenqxm4AY+gkzp4ASeneCx/Al0OeG+73ti+dFKxwwERaE0tXtbsQA6w3jw/Z3YgB8gjkgPkEckBexHVXrq5i+QAeUR/B6xA+6tqVrcA5/y7DgNnBC5OyATcSwPHqVsur7WcGyoHfAC5wCwZkHEBmwAAAABJRU5ErkJggg=="/> </a>
+                        <a type="button" id="deleteButton" th:href="@{/state/delete(id=${country.id})}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKRJREFUSEvtlUEKgCAQRV93CYK6TsdpGXSZrlPQaYpAXVjDt8xd7mR03v8z6FQUXlXh/ChAD4xAYwjZgAGYLaEKsACtcLkC3VvA7i5aQlRclkglUPELwF/I7X1wHFsvDvDKpfXIonn+dfO+BsQK1T7wUx2ohNkl+gGXd/W0JH8P5NeUXSJFeAxIGTQx9HbwWC/5HJUTUCvpLm6OTjUyE/Pbx4oDDlBhOBmYaWrOAAAAAElFTkSuQmCC"/> </a>
 
                     </td>
                 </tr>
