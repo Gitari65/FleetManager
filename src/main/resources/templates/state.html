@@ -517,16 +517,19 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" th:action="@{/countries/addNew}" >
+                            <form method="post" th:action="@{/states/addNew}" >
                                 <div class="mb-3">
                                     <label for="state-id" class="form-label">ID</label>
                                     <input type="text" class="form-control" id="state-id" name="id" >
                                     <label for="state-code" class="form-label">Code</label>
                                     <input type="text" class="form-control" id="state-code" name="code" >
                                     <label for="state-description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" id="state-description" name="description"  >
-                                    <label for="state-continent" class="form-label">Continent</label>
-                                    <input type="text" class="form-control" id="state-continent" name="continent" >
+                                    <input type="text" class="form-control" id="state-description" name="details"  >
+                                    <label for="country" class="form-label">Continent</label>
+                                    <select id="country" >
+                                    <option  th:each="country:${countries.id} " th:value="{country.id}" th:text="{country.name}"></option>
+                                    </select>
+
 
 
                                 </div>
