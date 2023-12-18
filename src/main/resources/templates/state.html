@@ -503,7 +503,126 @@
     <section class="section dashboard">
         <div class="row">
 
-            <h1>My EmployeeTypes</h1>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#updateModal">
+                +Add a State
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">New Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" th:action="@{/countries/addNew}" >
+                                <div class="mb-3">
+                                    <label for="state-id" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="state-id" name="id" >
+                                    <label for="state-code" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="state-code" name="code" >
+                                    <label for="state-description" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="state-description" name="description"  >
+                                    <label for="state-continent" class="form-label">Continent</label>
+                                    <input type="text" class="form-control" id="state-continent" name="continent" >
+
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editModalLabel">Edit Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" th:action="@{/countries/update}"  >
+                                <div class="mb-3">
+                                    <input type="hidden" name="_method" value="put" />
+                                    <label for="country-id-edit" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="country-id-edit" name="id" >
+                                    <label for="country-code-edit" class="form-label">Code</label>
+                                    <input type="text" class="form-control" id="country-code-edit" name="code" >
+                                    <label for="country-description-edit" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="country-description-edit" name="description"  >
+                                    <label for="country-continent-edit" class="form-label">Continent</label>
+                                    <input type="text" class="form-control" id="country-continent-edit" name="continent" >
+                                    <label for="country-nationality-edit" class="form-label">Nationality</label>
+                                    <input type="text" class="form-control" id="country-nationality-edit" name="nationality" >
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="confirmModalLabel">Edit Country Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <P>Are you sure you want to  delete?</P>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <a type="button" href="" id="confirmDeleteButton" class="btn btn-primary">Yes,Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Table-->
+            <table class="table table-striped" id="state-table">
+                <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="state:${states}">
+                    <td th:text="${state.code}"></td>
+                    <td th:text="${state.name}"></td>
+                    <td th:text="${state.details}"></td>
+                    <td>
+
+                        <a type="button" id="editButton" th:href="@{/states/findById(id=${state.id})}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPJJREFUSEvF0zFKBDEUh/HfnkALEWy19gI2Xkg7rdZGRAu19EaCN7ASbK0EtxeUB1PEcTLJTHbZtEm+7+X/XhY2vBYb5msV3OAb17lCWwQPuOjAl3gckswV7OEV+wn0Crd9yRzBLr5whGccdNAl7loFZ4hKT/COQ7x08TRHFHlH7rE+cIo37GDV2uRo4n0PEpJjfI6Nek0P0spT1hPOS/+oJGiCh3xMkINHMyOyqpUTrAWee8Ha4DnBz8DbJ8WS3h+KqC+YDa95QRO8NEVVU1I6VPoHpfvF/a0IhqaoWGly4E/RNVM0Bf6vr1uJaGrFo+d/AQouJhks7bRaAAAAAElFTkSuQmCC"/></a>
+                        <a type="button" id="detailButton"  class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKVJREFUSEu9lUEKwjAQRV/PIRSkC71NL+PGG7QX8iDddCcteA8l0EAMKRkcf7NN5r/8zyTTIF6NWJ9DAT0wAFenqxm4AY+gkzp4ASeneCx/Al0OeG+73ti+dFKxwwERaE0tXtbsQA6w3jw/Z3YgB8gjkgPkEckBexHVXrq5i+QAeUR/B6xA+6tqVrcA5/y7DgNnBC5OyATcSwPHqVsur7WcGyoHfAC5wCwZkHEBmwAAAABJRU5ErkJggg=="/> </a>
+                        <a type="button" id="deleteButton" th:href="@{/states/delete(id=${state.id})}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKRJREFUSEvtlUEKgCAQRV93CYK6TsdpGXSZrlPQaYpAXVjDt8xd7mR03v8z6FQUXlXh/ChAD4xAYwjZgAGYLaEKsACtcLkC3VvA7i5aQlRclkglUPELwF/I7X1wHFsvDvDKpfXIonn+dfO+BsQK1T7wUx2ohNkl+gGXd/W0JH8P5NeUXSJFeAxIGTQx9HbwWC/5HJUTUCvpLm6OTjUyE/Pbx4oDDlBhOBmYaWrOAAAAAElFTkSuQmCC"/> </a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h1>States</h1>
 
 
 
