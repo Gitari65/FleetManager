@@ -2,6 +2,7 @@ package com.example.manager.demo.config;
 
 import org.apache.el.parser.ParseException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,4 +32,15 @@ public class GlobalExceptionHandler {
     model.addAttribute("error",tex.getMessage());
     return  "error";
     }
+
+    @ExceptionHandler(HttpMessageConversionException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleHttpMessageConversionException(HttpMessageConversionException ex, Model model) {
+        model.addAttribute("error", "Error converting message: " + ex.getMessage());
+        return "error";
+    }
+
+
+
+
 }

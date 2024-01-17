@@ -21,9 +21,21 @@ public class FrontEnd {
     public String contact(){
         return "contact";
     }
-    @GetMapping("/newVehicle")
-    public String newVehicle(){
+//    @GetMapping("/newVehicle")
+//    public String newVehicle(){
+//        return "vehicles";
+//    }
+    @GetMapping("client")
+    public String client(){
+        return "client";
+    }
+    @GetMapping("vehicles")
+    public String vehicles(){
         return "vehicles";
+    }
+    @GetMapping("services")
+    public String services(){
+        return "services";
     }
 
 

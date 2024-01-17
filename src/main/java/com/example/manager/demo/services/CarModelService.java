@@ -15,4 +15,8 @@ public class CarModelService {
     public List<CarModel> getCarModels() {
         return modelRepository.findAll();
     }
+
+    public List<CarModel> getCarModelsByMakeId(Long carMakeId) {
+        return modelRepository.findByCarMakeMakeId(carMakeId);
+    }
 }

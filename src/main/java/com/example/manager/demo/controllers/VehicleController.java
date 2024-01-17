@@ -27,12 +27,12 @@ public class VehicleController {
         return "redirect:/newVehicles";
 
     }
-    @PostMapping("/vehicle/addNew")
+    @PostMapping("/newVehicle")
     public String addNewVehicle(@ModelAttribute Car car, @RequestParam("image")MultipartFile imageFile)throws IOException {
         car.setImage(imageFile.getBytes());
         vehicleService.addNewVehicle(car);
 
-        return "redirect:/newVehicles";
+        return "redirect:/newVehicle";
     }
 
 
