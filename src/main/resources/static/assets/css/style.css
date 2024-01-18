@@ -399,6 +399,7 @@ button {
 
 /* banner section end */
 /**Add new vehicle section start**/
+/**
 .file-upload-form {
   width: fit-content;
   height: fit-content;
@@ -439,6 +440,7 @@ button {
 .browse-button:hover {
   background-color: rgb(14, 14, 14);
 }
+**/
 #car-view{
 transform:translateY(-80px);
 }
