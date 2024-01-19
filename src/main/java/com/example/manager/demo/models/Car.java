@@ -3,6 +3,8 @@ package com.example.manager.demo.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Blob;
+
 @Data
 @Entity
 public class Car {
@@ -22,5 +24,7 @@ public class Car {
     private String year;
     private String description;
     @Lob
-    private byte[] image;
+    @Column(name="image")
+    private Blob image;
+
 }
