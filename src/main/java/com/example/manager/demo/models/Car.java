@@ -25,6 +25,6 @@ public class Car {
     private String description;
     @Lob
     @Column(name="image")
-    private Blob image;
+    private String image;
 
 }
