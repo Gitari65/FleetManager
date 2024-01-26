@@ -37,6 +37,10 @@ public class FrontEnd {
     public String services(){
         return "services";
     }
+    @GetMapping("/api/login")
+    public String login(){
+        return "login";
+    }
 
 
 }
