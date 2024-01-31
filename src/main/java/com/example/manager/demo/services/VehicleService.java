@@ -8,7 +8,10 @@ import com.example.manager.demo.models.CarMake;
 import com.example.manager.demo.models.CarModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +25,9 @@ public class VehicleService {
    public void deleteVehicle(Long id){
        vehicleRepository.deleteById(id);
    }
-    public void addNewVehicle(Car car){
-        vehicleRepository.save(car);
+    public void addNewVehicle(Car car, MultipartFile imageFile) throws IOException {
+        car.setImage(Base64.getEncoder().encodeToString(imageFile.getBytes()));
+       vehicleRepository.save(car);
     }
   /**Get carmodels**/
 
