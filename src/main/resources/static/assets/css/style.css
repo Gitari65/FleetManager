@@ -14,6 +14,12 @@
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
 @import url(nice-select.css);
+/**root **/
+:root{
+--color-orange:#fe5b29;
+--color-yellow:#f9b700;
+--color-black:#1d1d1d;
+}
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
@@ -1162,3 +1168,70 @@ textarea#comment::placeholder {
 .margin_top90 {
     margin-top: 90px;
 }
+
+
+/*login form start*/
+.login-body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.form-container {
+  width: 300px;
+  background: linear-gradient(180deg,var(--color-black) 25%,rgb(255, 255, 255) 20%);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.form-container p {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 30px;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+}
+
+.form-container label {
+  color: rgb(40, 42, 44);
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.form-container .input {
+  padding: 10px;
+  height: 35px;
+  border: none;
+  background-color: rgb(224, 231, 236);
+}
+
+.form-container .input:focus {
+  outline: none;
+}
+
+.form-container button {
+  border: none;
+  height: 35px;
+  margin-top: 30px;
+  background-color:var(--color-orange);
+  color: white;
+  font-size: 16px;
+}
+/*login form end*/
