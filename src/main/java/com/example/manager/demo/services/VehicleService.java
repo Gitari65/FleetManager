@@ -11,9 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class VehicleService {
@@ -31,6 +36,24 @@ public class VehicleService {
     }
   /**Get carmodels**/
 
+
+/**Save car**/
+//public Car saveCar(Car car, MultipartFile file) throws IOException{
+//    String directory=saveImageToDisk(file);
+//    car.setImage(directory);
+//    return vehicleRepository.save(car);
+//}
+//
+//    private String saveImageToDisk(MultipartFile file) throws IOException {
+//        String directory ="D:/projects/manager/localfiles";
+//        String fileName = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
+//        Path filePath = Paths.get("/path/to/uploaded/files/" + fileName);
+//        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+//        return directory+"/"+fileName;
+//
+//
+//
+//    }
 
 
 
