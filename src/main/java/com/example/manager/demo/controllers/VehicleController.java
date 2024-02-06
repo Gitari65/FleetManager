@@ -32,12 +32,17 @@ public class VehicleController {
 //        return "redirect:/newVehicles";
 //
 //    }
-@PostMapping("/add")
-public String addNewVehicle(@ModelAttribute Car car, @RequestParam("image") MultipartFile imageFile) throws IOException {
-
-    vehicleService.addNewVehicle(car,imageFile);
-    return "redirect:/newVehicles";
-}
+//@PostMapping("/add")
+//public String addNewVehicle(@ModelAttribute Car car, @RequestParam("image") MultipartFile imageFile) throws IOException {
+//
+//    try {
+//     vehicleService.saveCar(car, imageFile);
+//        return "redirect:/newVehicles";
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//        return "error";
+//    }
+//}
 
 
 }
