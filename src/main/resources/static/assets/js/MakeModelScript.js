@@ -13,7 +13,7 @@ function updateModelSelect() {
             console.log("models", models);
 
             // Clear existing options in datalist
-            datalist.innerHTML = "";
+
 
             // Add new options based on the fetched models to the datalist
             models.forEach(model => {
