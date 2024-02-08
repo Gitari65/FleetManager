@@ -136,7 +136,8 @@
                     <h5 class="modal-title">Edit Vehicle</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="car-details-form" method="post" th:action="@{/car/add}" th:object="${Car}" enctype="multipart/form-data" >
+                <form id="car-details-form" method="post" th:action="@{/car/add}" th:object="${Car}"  >
+<!--                    enctype="multipart/form-data"-->
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="car-make" class="form-label">Make</label>
@@ -149,12 +150,12 @@
                             <label for="car-model" class="form-label">Model</label>
                             <input type="text" id="car-model" class="form-control" name="model" placeholder="Enter Model" list="model-list" oninput="updateModelSelect()">
 
-                            <datalist id="model-list" >
+                            <select class="form-select" name="make" id="model-list" >
                                 <!-- Dynamically generated options here -->
                                 <!-- For each car model -->
 
                                 <!-- Add more options as needed -->
-                            </datalist>
+                            </select>
 
                         </div>
 
@@ -194,11 +195,11 @@
                               <div id="fileSizeError" style="color: red;"></div>
 
                         </div>
-                        <div class="mb-3">
-                            <label  class="form-check-label" for="file"> Image</label>
-                            <input id="file" class="browse-button form-control" required name="image" type="file" accept="image/*" >
+<!--                        <div class="mb-3">-->
+<!--                            <label  class="form-check-label" for="file"> Image</label>-->
+<!--                            <input id="file" class="browse-button form-control" required name="image" type="file" accept="image/*" >-->
 
-                        </div>
+<!--                        </div>-->
 
 
                     </div>
