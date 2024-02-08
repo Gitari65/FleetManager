@@ -38,22 +38,23 @@ public class VehicleService {
 
 
 /**Save car**/
-//public Car saveCar(Car car, MultipartFile file) throws IOException{
+public Car saveCar(Car car) throws IOException{
 //    String directory=saveImageToDisk(file);
 //    car.setImage(directory);
-//    return vehicleRepository.save(car);
-//}
-//
-//    private String saveImageToDisk(MultipartFile file) throws IOException {
-//        String directory ="D:/projects/manager/localfiles";
-//        String fileName = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
-//        Path filePath = Paths.get("/path/to/uploaded/files/" + fileName);
-//        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-//        return directory+"/"+fileName;
-//
-//
-//
-//    }
+//    , MultipartFile file
+    return vehicleRepository.save(car);
+}
+
+    private String saveImageToDisk(MultipartFile file) throws IOException {
+        String directory ="D:/projects/manager/localfiles";
+        String fileName = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
+        Path filePath = Paths.get("/path/to/uploaded/files/" + fileName);
+        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+        return directory+"/"+fileName;
+
+
+
+    }
 
 
 
