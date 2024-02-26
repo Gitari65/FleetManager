@@ -15,10 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class VehicleService {
@@ -34,16 +31,16 @@ public class VehicleService {
         car.setImage(Base64.getEncoder().encodeToString(imageFile.getBytes()));
        vehicleRepository.save(car);
     }
-  /**Get carmodels**/
+      /**Get carmodels**/
 
 
-/**Save car**/
-public Car saveCar(Car car) throws IOException{
-//    String directory=saveImageToDisk(file);
-//    car.setImage(directory);
-//    , MultipartFile file
-    return vehicleRepository.save(car);
-}
+    /**Save car**/
+    public Car saveCar(Car car) throws IOException{
+    //    String directory=saveImageToDisk(file);
+    //    car.setImage(directory);
+    //    , MultipartFile file
+        return vehicleRepository.save(car);
+    }
 
     private String saveImageToDisk(MultipartFile file) throws IOException {
         String directory ="D:/projects/manager/localfiles";
@@ -52,13 +49,23 @@ public Car saveCar(Car car) throws IOException{
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         return directory+"/"+fileName;
 
-
-
     }
 
-
-
-
+    public Optional<Car> updateVehicle(Long carId,Car updatedCar){
+        return vehicleRepository.findById(carId).map(car -> {
+            car.setPrice(updatedCar.getPrice());
+            car.setAvailability(updatedCar.getAvailability());
+            car.setColor(updatedCar.getColor());
+            car.setFuelType(updatedCar.getFuelType());
+            car.setTransmission(updatedCar.getTransmission());
+            car.setEngineSize(updatedCar.getEngineSize());
+            car.setMileage(updatedCar.getMileage());
+            car.setYear(updatedCar.getYear());
+            car.setDescription(updatedCar.getDescription());
+            car.setImage(updatedCar.getImage());
+            return vehicleRepository.save(car);
+        });
+    }
     public List<Car> getAllVehicles(){
         return vehicleRepository.findAll();
     }
@@ -66,7 +73,12 @@ public Car saveCar(Car car) throws IOException{
         return vehicleRepository.findById(id);
     }
 
-
+    public List<Car> getVehiclesByMakeId(Long makeId){
+        return vehicleRepository.findByCarModel_CarMake_MakeId(makeId);
+    }
+    public List<Car> getVehiclesByModelId(Long modelId){
+        return vehicleRepository.findByCarModel_ModelId(modelId);
+    }
 
 
 
