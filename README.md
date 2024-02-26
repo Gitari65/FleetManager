@@ -70,12 +70,5 @@ The Fleet Management System allows users to manage vehicles, including adding, u
 
 ## Contributors
 
-- [Your Name](https://github.com/Gitari65)
+- Alex Gitari (https://github.com/Gitari65)
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-Feel free to customize this `README.md` file according to your project's specific details and requirements. Include additional sections as needed, such as deployment instructions, troubleshooting tips, or project structure explanation.
