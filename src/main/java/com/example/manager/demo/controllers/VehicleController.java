@@ -3,9 +3,11 @@ package com.example.manager.demo.controllers;
 import com.example.manager.demo.models.Car;
 import com.example.manager.demo.models.CarMake;
 import com.example.manager.demo.models.CarModel;
+import com.example.manager.demo.models.CarRequest;
 import com.example.manager.demo.services.VehicleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @RestController
 @RequestMapping("/car")
 public class VehicleController {
@@ -30,9 +32,10 @@ public class VehicleController {
         @Tag(name= "Post")
         @Operation(summary = "Add new vehicle")
         @PostMapping("/add")
-        public String addNewVehicle(@ModelAttribute Car car) throws IOException {
+        public String addNewVehicle(@ModelAttribute CarRequest car) throws IOException {
 
             try {
+                log.info("Car request: {}",car.getCarModel());
         //        , @RequestParam("image") MultipartFile imageFile
              vehicleService.saveCar(car);
                 return "redirect:/newVehicle";
