@@ -296,6 +296,11 @@ button {
 .padding_left_15 {
     padding-left: 10px;
 }
+.logo-image{
+
+width:200px;
+height: 100px;
+}
 
 /* header section end */
 
@@ -1235,3 +1240,19 @@ textarea#comment::placeholder {
   font-size: 16px;
 }
 /*login form end*/
+
+
+/**Body content **/
+.content_section {
+    width: 100%;
+    float: left;
+    padding: 90px 0px;
+}
+.content_section h4{
+font-size:27px;
+}
+
+#error-image{
+width:60%;
+height: 60%;
+}
