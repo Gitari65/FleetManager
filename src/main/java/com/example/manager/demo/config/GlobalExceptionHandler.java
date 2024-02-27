@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 
 @ControllerAdvice
@@ -38,6 +39,13 @@ public class GlobalExceptionHandler {
     public String handleHttpMessageConversionException(HttpMessageConversionException ex, Model model) {
         model.addAttribute("error", "Error converting message: " + ex.getMessage());
         return "error";
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public String handleNotFoundError(Model model){
+    String errorMessage="Ooops! Something went wrong";
+    model.addAttribute("error",errorMessage);
+    return "error";
     }
 
 
